@@ -1,0 +1,47 @@
+{
+ "autoname": "field:shipment_provider",
+ "creation": "2020-07-31 15:50:01.002580",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "shipment_provider",
+  "is_cod"
+ ],
+ "fields": [
+  {
+   "fieldname": "shipment_provider",
+   "fieldtype": "Data",
+   "label": "Shipment Provider ",
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cod",
+   "fieldtype": "Check",
+   "label": "Is COD"
+  }
+ ],
+ "modified": "2020-07-31 16:10:11.307509",
+ "modified_by": "Administrator",
+ "module": "Lazada ERPNext Connector",
+ "name": "Shipment Provider",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

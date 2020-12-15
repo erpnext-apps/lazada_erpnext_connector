@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include lazada_erpnext_connector *.css
+recursive-include lazada_erpnext_connector *.csv
+recursive-include lazada_erpnext_connector *.html
+recursive-include lazada_erpnext_connector *.ico
+recursive-include lazada_erpnext_connector *.js
+recursive-include lazada_erpnext_connector *.json
+recursive-include lazada_erpnext_connector *.md
+recursive-include lazada_erpnext_connector *.png
+recursive-include lazada_erpnext_connector *.py
+recursive-include lazada_erpnext_connector *.svg
+recursive-include lazada_erpnext_connector *.txt
+recursive-exclude lazada_erpnext_connector *.pyc

@@ -1,0 +1,277 @@
+{
+ "creation": "2020-06-30 17:18:08.240751",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "url",
+  "api_key",
+  "api_secret",
+  "column_break_4",
+  "code",
+  "callback_url",
+  "authorize_lazada",
+  "section_break_7",
+  "access_token",
+  "refresh_token",
+  "column_break_10",
+  "last_sync_access_token",
+  "get_refresh_token",
+  "get_access_token",
+  "functions_call_section",
+  "search_item",
+  "created_after",
+  "sync_limit",
+  "column_break_14",
+  "synced_items",
+  "product_last_sync",
+  "remaining_items",
+  "total_lazada_item",
+  "get_products",
+  "section_break_15",
+  "get_transactions",
+  "column_break_18",
+  "from_date",
+  "to_date",
+  "transaction_last_sync",
+  "section_break_20",
+  "get_orders",
+  "column_break_22",
+  "order_last_sync",
+  "section_break_24",
+  "get_category",
+  "get_shipment_provider",
+  "column_break_27",
+  "last_shipment_provider_sync"
+ ],
+ "fields": [
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Data",
+   "label": "API Key"
+  },
+  {
+   "fieldname": "api_secret",
+   "fieldtype": "Password",
+   "label": "API Secret"
+  },
+  {
+   "fieldname": "callback_url",
+   "fieldtype": "Data",
+   "label": "Callback URL",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "refresh_token",
+   "fieldtype": "Password",
+   "label": "Refresh Token"
+  },
+  {
+   "fieldname": "get_access_token",
+   "fieldtype": "Button",
+   "label": "Get Access Token",
+   "options": "get_access_token"
+  },
+  {
+   "fieldname": "get_products",
+   "fieldtype": "Button",
+   "label": "Get Products",
+   "options": "get_products"
+  },
+  {
+   "fieldname": "get_refresh_token",
+   "fieldtype": "Button",
+   "label": "Get Refresh Token",
+   "options": "get_refresh_token"
+  },
+  {
+   "fieldname": "get_orders",
+   "fieldtype": "Button",
+   "label": "Get Orders",
+   "options": "get_orders"
+  },
+  {
+   "fieldname": "get_transactions",
+   "fieldtype": "Button",
+   "label": "Get Transactions",
+   "options": "get_transactions"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "functions_call_section",
+   "fieldtype": "Section Break",
+   "label": "Product Sync"
+  },
+  {
+   "fieldname": "last_sync_access_token",
+   "fieldtype": "Datetime",
+   "label": "Last Sync Access Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "product_last_sync",
+   "fieldtype": "Data",
+   "label": "Product Last Sync",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_last_sync",
+   "fieldtype": "Data",
+   "label": "Order Last Sync",
+   "read_only": 1
+  },
+  {
+   "fieldname": "get_category",
+   "fieldtype": "Button",
+   "hidden": 1,
+   "label": "Get Category",
+   "options": "get_category"
+  },
+  {
+   "fieldname": "get_shipment_provider",
+   "fieldtype": "Button",
+   "label": "Get Shipment Provider",
+   "options": "get_shippment_pro"
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transaction_last_sync",
+   "fieldtype": "Data",
+   "label": "Transaction Last Sync",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_24",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_shipment_provider_sync",
+   "fieldtype": "Data",
+   "label": "Last Shipment Provider Sync",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "fieldname": "authorize_lazada",
+   "fieldtype": "Button",
+   "label": "Authorize Lazada"
+  },
+  {
+   "description": "Minimum Sync limit 20 - Maximum Sync Limit 100",
+   "fieldname": "sync_limit",
+   "fieldtype": "Int",
+   "label": "Sync Limit"
+  },
+  {
+   "fieldname": "synced_items",
+   "fieldtype": "Int",
+   "label": "Synced Items",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remaining_items",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Remaining Items"
+  },
+  {
+   "fieldname": "total_lazada_item",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Total Lazada Item"
+  },
+  {
+   "description": "Enter the Items You want to fetch from Lazada.\nNote: Enter Seller SKU of Item. Add Item in Comma-separated format.",
+   "fieldname": "search_item",
+   "fieldtype": "Small Text",
+   "label": "Search Item"
+  },
+  {
+   "fieldname": "created_after",
+   "fieldtype": "Date",
+   "label": "Created After"
+  }
+ ],
+ "issingle": 1,
+ "modified": "2020-12-05 14:21:13.977245",
+ "modified_by": "Administrator",
+ "module": "Lazada ERPNext Connector",
+ "name": "Lazada Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
