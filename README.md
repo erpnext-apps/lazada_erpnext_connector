@@ -1,6 +1,6 @@
 ## Lazada ERPNext Connector
 
-Lazada Ecommerce Platform Integration witH E
+Lazada Ecommerce Platform Integration with ERPNext
 
 #### License
 
