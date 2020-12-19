@@ -54,10 +54,15 @@ def get_pw(doctype,field_name):
     strPassword = docSettings.get_password(field_name)
     return strPassword
 
-api_key = frappe.db.get_value("Lazada Settings",None,"api_key")
-api_secret = get_pw("Lazada Settings","api_secret")
-access_token = get_pw("Lazada Settings","access_token")
-url = frappe.db.get_value("Lazada Settings",None,"url")
+try:
+    api_key = frappe.db.get_value("Lazada Settings",None,"api_key")
+    api_secret = get_pw("Lazada Settings","api_secret")
+    access_token = get_pw("Lazada Settings","access_token")
+    url = frappe.db.get_value("Lazada Settings",None,"url")
+except Exception as e:
+    print(e)
+    pass
+
 # *****************************************************************************************************************
 # API Functions Classes
 # *****************************************************************************************************************
