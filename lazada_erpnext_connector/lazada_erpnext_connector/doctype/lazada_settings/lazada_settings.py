@@ -54,10 +54,15 @@ def get_pw(doctype,field_name):
     strPassword = docSettings.get_password(field_name)
     return strPassword
 
-api_key = frappe.db.get_value("Lazada Settings",None,"api_key")
-api_secret = get_pw("Lazada Settings","api_secret")
-access_token = get_pw("Lazada Settings","access_token")
-url = frappe.db.get_value("Lazada Settings",None,"url")
+try:
+    api_key = frappe.db.get_value("Lazada Settings",None,"api_key")
+    api_secret = get_pw("Lazada Settings","api_secret")
+    # access_token = get_pw("Lazada Settings","access_token")
+    url = frappe.db.get_value("Lazada Settings",None,"url")
+except Exception as e:
+    print(e)
+    pass
+
 # *****************************************************************************************************************
 # API Functions Classes
 # *****************************************************************************************************************
@@ -70,6 +75,7 @@ class Products(LazadaSettings):
         self.synced_items = frappe.db.get_value("Lazada Settings",None,"synced_items")
         self.created_after = frappe.db.get_value("Lazada Settings",None,"created_after")
         self.search_item = frappe.db.get_value("Lazada Settings",None,"search_item")
+        self.access_token = get_pw("Lazada Settings","access_token")
 
     def get_all_products(self,limit,offset):
         client = LazopClient(url, api_key ,api_secret)
@@ -87,7 +93,7 @@ class Products(LazadaSettings):
             created_after = datetime.strptime(str(self.created_after),"%Y-%m-%d").isoformat()
             request.add_api_param('create_after', created_after)
         
-        response = client.execute(request, access_token)
+        response = client.execute(request, self.access_token)
         if response.code != '0':
             # frappe.msgprint("Call is not sucessful")
             create_error_log('/products/get',response.code,response.message)
@@ -156,12 +162,13 @@ class Products(LazadaSettings):
 
 class Delivery(object):
     def __init__(self):
-        pass
+        self.access_token = get_pw("Lazada Settings","access_token")
+        # pass
     def get_shippment_provider(self):
         client = LazopClient(url, api_key ,api_secret)
         request = LazopRequest('/shipment/providers/get','GET')
 
-        response = client.execute(request, access_token)
+        response = client.execute(request, self.access_token)
         data = response.body['data']['shipment_providers']
         for ship in data:
             shipment_provider = {
@@ -178,7 +185,7 @@ class Delivery(object):
 
 class Orders(object):
     def __init__(self):
-        
+        self.access_token = get_pw("Lazada Settings","access_token")
         self.default_customer = frappe.db.get_value("Lazada Defaults",None,"customer")
         self.default_warehouse = frappe.db.get_value("Lazada Defaults",None,"default_warehouse")
         self.last_sync = frappe.db.get_value("Lazada Settings",None,"order_last_sync")
@@ -191,7 +198,7 @@ class Orders(object):
         request.add_api_param('limit', 50)
         request.add_api_param('sort_direction', 'DESC')
         # frappe.msgprint(str(access_token))
-        response = client.execute(request,access_token)
+        response = client.execute(request,self.access_token)
         # frappe.msgprint(str(response.type))
         # frappe.msgprint(str(response.body))
         if response.code != '0':
@@ -208,7 +215,7 @@ class Orders(object):
         client = LazopClient(url, api_key ,api_secret)
         request = LazopRequest('/orders/items/get','GET')
         request.add_api_param('order_ids', order_id)
-        response = client.execute(request, access_token)
+        response = client.execute(request, self.access_token)
         if response.code != '0':
             # frappe.msgprint("Call is not sucessful")
             create_error_log('/orders/items/get',response.code,response.message)
@@ -263,7 +270,7 @@ class Orders(object):
 
 class OrdersDoc(object):
     def __init__(self):
-        pass
+        self.access_token = get_pw("Lazada Settings","access_token")
 
     def get_oreder_doc(self,order_item_ids):
         client = LazopClient(url, api_key ,api_secret)
@@ -271,7 +278,7 @@ class OrdersDoc(object):
         request.add_api_param('doc_type', 'invoice')
         request.add_api_param('order_item_ids', order_item_ids)
         
-        response = client.execute(request, access_token)
+        response = client.execute(request, self.access_token)
         # frappe.msgprint(str(response.type))
         # frappe.msgprint(str(response.body))
         return response.body
@@ -281,7 +288,7 @@ class OrdersDoc(object):
         
 class Transaction(object):
     def __init__(self):
-        
+        self.access_token = get_pw("Lazada Settings","access_token")
         self.company = frappe.db.get_value("Global Defaults",None,"default_company")
         self.cash_account = frappe.db.get_value("Company",self.company,"default_cash_account")
         self.receivalble = frappe.db.get_value("Company",self.company,"default_receivable_account")
@@ -300,7 +307,7 @@ class Transaction(object):
         request.add_api_param('trans_type', '13')
         request.add_api_param('end_time', str(self.to_date))
         request.add_api_param('start_time',str(self.from_date))
-        response = client.execute(request, access_token)
+        response = client.execute(request, self.access_token)
         # frappe.msgprint(str(response.type))
         # frappe.msgprint(str(response.body))
         return response.body
@@ -348,6 +355,7 @@ class Transaction(object):
         
 class Authentication(object):
     def __init__(self):
+        self.access_token = get_pw("Lazada Settings","access_token")
         self.callback_url = frappe.db.get_value("Lazada Settings",None,"callback_url")
         self.refresh_token = get_pw("Lazada Settings","refresh_token")
         
