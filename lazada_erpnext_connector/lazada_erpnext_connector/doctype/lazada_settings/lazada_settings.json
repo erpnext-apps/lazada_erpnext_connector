@@ -134,8 +134,7 @@
      {
       "fieldname": "order_last_sync",
       "fieldtype": "Data",
-      "label": "Order Last Sync",
-      "read_only": 1
+      "label": "Order Last Sync"
      },
      {
       "fieldname": "get_category",

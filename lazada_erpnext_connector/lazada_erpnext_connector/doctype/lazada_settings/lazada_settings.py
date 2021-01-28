@@ -201,7 +201,8 @@ class Orders(object):
     def get_all_orders(self):
         client = LazopClient(self.url, self.api_key ,self.api_secret)
         request = LazopRequest('/orders/get','GET')
-        request.add_api_param('created_after', self.last_sync)
+        if self.last_sync:
+            request.add_api_param('created_after', self.last_sync)
         request.add_api_param('status', 'pending')
         request.add_api_param('limit', 50)
         request.add_api_param('sort_direction', 'DESC')
