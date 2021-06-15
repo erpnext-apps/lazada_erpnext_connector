@@ -267,7 +267,7 @@ class Orders(object):
                             "lazada_order_id":order['order_id'],
                             "po_no":order['order_number'],
                             "items":items,
-                            "cash_direct_sales_name":order['address_billing']['first_name'],
+                            "cash_direct_sales_name":order['address_shipping']['first_name'],
                             "order_type":"Sales"}
                             if not frappe.db.exists("Sales Order", frappe.db.get_value("Sales Order",{"po_no":order['order_number']},"name")):
                                 # frappe.msgprint(str(items))
