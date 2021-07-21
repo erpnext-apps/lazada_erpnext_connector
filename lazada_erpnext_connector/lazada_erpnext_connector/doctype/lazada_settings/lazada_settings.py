@@ -204,7 +204,7 @@ class Orders(object):
         if self.last_sync:
             request.add_api_param('created_after', self.last_sync)
         request.add_api_param('status', 'pending')
-        request.add_api_param('limit', 50)
+        request.add_api_param('limit', 99)
         request.add_api_param('sort_direction', 'DESC')
         # frappe.msgprint(str(access_token))
         response = client.execute(request,self.access_token)
